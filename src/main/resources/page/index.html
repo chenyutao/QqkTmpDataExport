@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>周口市农村劳动力基本信息采集表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/mui.min.css">
+    <!--App自定义的css-->
+    <!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
+    <!--<link href="css/mui.picker.css" rel="stylesheet" />-->
+    <link href="css/mui.poppicker.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <style type="text/css">
+        #list {
+            /*避免导航边框和列表背景边框重叠，看起来像两条边框似得；*/
+            margin-top: -1px;
+        }
+
+        .mui-input-row label {
+            color: #8f8f94;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .mui-switch.mui-active:before {
+            content: '是';
+        }
+
+        .mui-switch:before {
+            content: '否';
+        }
+
+        .mui-input-row:after {
+            height: 0px!important;
+        }
+    </style>
+</head>
+
+<body>
+<image class="banner" src="images/banner.jpg" mode=""></image>
+
+<div class="mui-content">
+    <form class="mui-input-group">
+        <ul class="mui-table-view">
+            <div id="test1">
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>姓名<span style="color: red;">*</span></label>
+                            <input id="Name" name="useName" type="text" class="mui-input-clear" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>身份证号<span style="color: red;">*</span></label>
+                            <input id="iDcard" type="text" class="mui-input-clear" placeholder="请输入身份证号">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>手机号<span style="color: red;">*</span></label>
+                            <input id="Phone" type="text" class="mui-input-clear" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>户籍<span style="color: red;">*</span></label>
+                        <input id='showhjCityPicker' type="text" class="mui-input-clear" placeholder="-请选择省市县-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>乡/镇<span style="color: red;">*</span></label>
+                        <input id='showhjTownPicker' type="text" class="mui-input-clear" placeholder="-请选择县镇-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>行政村<span style="color: red;">*</span></label>
+                        <input id='showhjVillagePicker' type="text" class="mui-input-clear" placeholder="-请选择行政村-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>户籍详细地址<span style="color: red;">*</span></label>
+                        <input id="hjAddress" type="text" class="mui-input-clear" placeholder="请输入详细地址">
+                    </div>
+                </li>
+            </div>
+            <hr />
+            <!--<li class="mui-table-view-cell">
+                <h5 class="mui-content-padded">性别<span style="color: red;">*</span></h5>
+                <div class="mui-input-row mui-radio mui-left">
+                    <label>男</label>
+                    <input class="mui-radio" name="sex" type="radio" value="1" checked>
+                </div>
+                <div class="mui-input-row mui-radio mui-left">
+                    <label>女</label>
+                    <input class="mui-radio" name="sex" type="radio" value="2">
+                </div>
+            </li>-->
+            <div id="test1">
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>民族<span style="color: red;">*</span></label>
+                            <input id='showNationPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>政治面貌<span style="color: red;">*</span></label>
+                        <input id='showPoliticPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>文化程度<span style="color: red;">*</span></label>
+                        <input id='showCulturePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>类别<span style="color: red;">*</span></label>
+                            <input id='showTypePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>户主关系<span style="color: red;">*</span></label>
+                        <input id='showLinkPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>脱贫状态<span style="color: red;">*</span></label>
+                        <input id='showPovertyPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>健康状态<span style="color: red;">*</span></label>
+                        <input id='showHealthPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+            </div>
+            <hr />
+            <!--<li class="mui-table-view-cell">
+                <div class="mui-collapse-content">
+                    <div class="mui-input-row">
+                        <label>出生日期<span style="color: red;">*</span></label>
+                        <input id="birthDate" type="text" class="mui-input-clear" placeholder="-选择日期-">
+                    </div>
+                </div>
+            </li>-->
+
+            <li class="mui-table-view-cell">
+                <label style="font-size: 16px;">是否就/创业</label>
+                <div id="isWorking" class="mui-switch mui-switch-blue mui-active">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </li>
+            <div id="workingTrue">
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>就/创业途径<span style="color: red;">*</span></label>
+                        <input id='showPathPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>单位名称<span style="color: red;">*</span></label>
+                            <input id="companyName" type="text" class="mui-input-clear" placeholder="如：xx公司、灵活就业等">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>就/创业地<span style="color: red;">*</span></label>
+                        <input id='showcyCityPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>单位详细地址<span style="color: red;">*</span></label>
+                        <input id="cyAddress" type="text" class="mui-input-clear" placeholder="请输入工作地点详细地址">
+                    </div>
+                </li>
+
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>就/创业时间<span style="color: red;">*</span></label>
+                            <input id="workDate" type="text" class="mui-input-clear" placeholder="-选择日期-" readonly>
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>从事领域<span style="color: red;">*</span></label>
+                        <input id='showLinePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>劳动技能<span style="color: red;">*</span></label>
+                        <input id='showSkillPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <!--//缺少分割线-->
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label style="width: 25%;">月收入<span style="color: red;">*</span></label>
+                            <label style="float: right; width: 10%;">元</label>
+                            <input style="width: 60%;" id="monthIncome" type="text" class="mui-input-clear" placeholder="请填写月收入【纯数字】">
+
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>输出渠道<span style="color: red;">*</span></label>
+                        <input id='showDitchPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+            </div>
+            <!--//家庭服务业从业者选项-->
+            <div id="showWaiter">
+                <li class="mui-table-view-cell">
+                    <label style="font-size: 16px;">是否为家庭服务业从业人员</label>
+                    <div id="isWaiter" class="mui-switch mui-switch-blue">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <div id="WaiterTrue" style="display: none;">
+                    <li class="mui-table-view-cell">
+                        <div class="mui-input-row">
+                            <label>从业类型<span style="color: red;">*</span></label>
+                            <input id='showWaiterTypePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <h5 class="mui-content-padded">是否接受培训<span style="color: red;">*</span></h5>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>是</label>
+                            <input class="mui-radio" name="trained" type="radio" value="1" checked>
+                        </div>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>否</label>
+                            <input class="mui-radio" name="trained" type="radio" value="0">
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <h5 class="mui-content-padded">是否签订合同<span style="color: red;">*</span></h5>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>是</label>
+                            <input class="mui-radio" name="getContract" type="radio" value="1" checked>
+                        </div>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>否</label>
+                            <input class="mui-radio" name="getContract" type="radio" value="0">
+                        </div>
+                    </li>
+                </div>
+                <div id="WaiterFalse"></div>
+
+            </div>
+            <div id="workingFalse" style="display: none;">
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>未就业原因<span style="color: red;">*</span></label>
+                        <input id='showOutWorkPicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+            </div>
+            <hr />
+            <li class="mui-table-view-cell">
+                <label style="font-size: 16px;">是否参加过培训</label>
+                <div id="isTrained" class="mui-switch mui-switch-blue mui-active">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </li>
+            <div id="TrainedTrue">
+                <li class="mui-table-view-cell">
+                    <div class="mui-input-row">
+                        <label>培训类型<span style="color: red;">*</span></label>
+                        <input id='showTrainTypePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <label style="font-size: 16px;">是否取得培训证书</label>
+                    <div id="isGetCertificate" class="mui-switch mui-switch-blue mui-active">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <div id="getCertificateTure">
+                    <li class="mui-table-view-cell">
+                        <label style="color: #8f8f94;font-size: 16px;font-weight: 400; padding:11px 15px; ">所得证书份数:<span style="color: red;">*</span></label>
+                        <div class="mui-numbox" data-numbox-min='1' style="margin-left: 20%;">
+                            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+                            <input id="trainedCertificateCount" class="mui-input-numbox" type="number" />
+                            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                        </div>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <h5 class="mui-content-padded">培训后是否就业<span style="color: red;">*</span></h5>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>是</label>
+                            <input class="mui-radio" name="work" type="radio" value="1" checked>
+                        </div>
+                        <div class="mui-input-row mui-radio mui-left">
+                            <label>否</label>
+                            <input class="mui-radio" name="work" type="radio" value="0">
+                        </div>
+                    </li>
+                </div>
+                <div id="getCertificateFalse" style="display: none;"></div>
+            </div>
+            <div id="TrainedFalse" style="display: none;">
+                <li class="mui-table-view-cell">
+                    <label style="font-size: 16px;">是否有培训意愿</label>
+                    <div id="isTrainHope" class="mui-switch mui-switch-blue mui-active">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <div id="TrainHopeTrue">
+                    <li class="mui-table-view-cell">
+                        <div class="mui-input-row">
+                            <label>培训意向<span style="color: red;">*</span></label>
+                            <input id='showTrainHopePicker' type="text" class="mui-input-clear" placeholder="-请选择-" readonly>
+                        </div>
+                    </li>
+                </div>
+                <div id="TrainHopeFalse" style="display: none;"></div>
+            </div>
+
+            <div id="noTrainedWorkingTrue" style="display: none;">
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>无就（创）业、培训原因<span style="color: red;">*</span></label>
+                            <input id="noTrainedWorkingCause" type="text" class="mui-input-clear" placeholder="请填写无就（创）业、培训原因">
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <hr />
+            <li class="mui-table-view-cell">
+                <div class="mui-input-row">
+                    <label style="width: 50%;">下一步就业意愿<span style="color: red;">*</span></label>
+                    <input id='showWorkHopePicker' type="text" style="width: 40%;" class="mui-input-clear" placeholder="-请选择-" readonly>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <label style="font-size: 16px;">春节前是否返乡</label>
+                <div id="isBackHome" class="mui-switch mui-switch-blue mui-active">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </li>
+            <div id="BackHomeTrue">
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>返乡日期<span style="color: red;">*</span></label>
+                            <input id="backDate" type="text" class="mui-input-clear" placeholder="-选择日期-" readonly>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div id="BackHomeFalse" style="display: none;"></div>
+            <hr />
+            <li class="mui-table-view-cell">
+                <label style="font-size: 16px;">春节后是否外出</label>
+                <div id="isGoOut" class="mui-switch mui-switch-blue mui-active">
+                    <div class="mui-switch-handle"></div>
+                </div>
+            </li>
+            <div id="GoOutTrue">
+                <li class="mui-table-view-cell">
+                    <div class="mui-collapse-content">
+                        <div class="mui-input-row">
+                            <label>拟外出日期<span style="color: red;">*</span></label>
+                            <input id="goOutDate" type="text" class="mui-input-clear" placeholder="-选择日期-" readonly>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <div id="GoOutFalse" style="display: none;"></div>
+            <hr />
+            <li class="mui-table-view-cell">
+                <div class="mui-content-content" style="margin-bottom: 20px;">
+                    <div class="mui-button-row">
+                        <button id='submitBtn' class="mui-btn mui-btn-primary mui-btn-block" type="button">提交</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+<script src="js/mui.min.js"></script>
+<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/mui.picker.min.js"></script>
+<script src="js/mui.poppicker.js"></script>
+<script src="js/index.js?t=<%=new Date().getTime()%>"></script>
+<script src="js/link.data.js?t=<%=new Date().getTime()%>" type="text/javascript" charset="utf-8"></script>
+<script src="js/nation.data.js?t=<%=new Date().getTime()%>" type="text/javascript" charset="utf-8"></script>
+<script src="js/city.data-3.js?t=<%=new Date().getTime()%>" type="text/javascript" charset="utf-8"></script>
+<script src="js/checkTool.js?t=<%=new Date().getTime()%>" type="text/javascript" charset="utf-8"></script>
+<script>
+    mui.init({
+        statusBarBackground: '#f7f7f7'
+    });
+
+    var isWorking = 1, //是否就（创）业
+        isWaiter = 0, //是否为家庭服务业从业者
+        isTrained = 1, //是否参加过培训
+        isGetCertificate = 1, //是否获得证书
+        isTrainHope = 1, //是否有培训意愿
+        isBackHome = 1,
+        isGoOut = 1;
+    var aniShow = "pop-in";
+    var menu = null,
+        showMenu = false;
+    var isInTransition = false;
+    var _self;
+    var tmp = null;
+
+    //只有ios支持的功能需要在Android平台隐藏；
+    if(mui.os.android) {
+        var list = document.querySelectorAll('.ios-only');
+        if(list) {
+            for(var i = 0; i < list.length; i++) {
+                list[i].style.display = 'none';
+            }
+        }
+        //Android平台暂时使用slide-in-right动画
+        if(parseFloat(mui.os.version) < 4.4) {
+            aniShow = "slide-in-right";
+        }
+    }
+    //初始化，并预加载webview模式的选项卡
+    function preload() {
+
+        var menu_style = {
+            left: "-70%",
+            width: '70%',
+            popGesture: "none",
+            render: "always"
+        };
+
+        if(mui.os.ios) {
+            menu_style.zindex = -1;
+        }
+
+        //处理侧滑导航，为了避免和子页面初始化等竞争资源，延迟加载侧滑页面；
+        menu = mui.openWindow({
+            id: 'index-menu',
+            url: 'index-menu.html',
+            styles: menu_style,
+            show: {
+                aniShow: 'none'
+            },
+            waiting: {
+                autoShow: false
+            }
+        });
+    }
+    mui.plusReady(function() {
+        //读取本地存储，检查是否为首次启动
+        var showGuide = plus.storage.getItem("lauchFlag");
+        //仅支持竖屏显示
+        plus.screen.lockOrientation("portrait-primary");
+        if(showGuide) {
+            //有值，说明已经显示过了，无需显示；
+            //关闭splash页面；
+            plus.navigator.closeSplashscreen();
+            plus.navigator.setFullscreen(false);
+            //预加载
+            preload();
+        } else {
+            //显示启动导航
+            mui.openWindow({
+                id: 'guide',
+                url: 'examples/guide.html',
+                styles: {
+                    popGesture: "none"
+                },
+                show: {
+                    aniShow: 'none'
+                },
+                waiting: {
+                    autoShow: false
+                }
+            });
+            //延迟的原因：优先打开启动导航页面，避免资源争夺
+            setTimeout(function() {
+                //预加载
+                preload();
+            }, 200);
+        }
+
+        //绘制顶部图标
+        _self = plus.webview.currentWebview();
+        var titleView = _self.getNavigationbar();
+
+        if(!titleView) {
+            titleView = plus.webview.getLaunchWebview().getNavigationbar();
+        }
+
+        titleView.drawRect("#cccccc", {
+            top: "43px",
+            height: "1px",
+            left: "0px"
+        }); //绘制底部边线
+
+        //开启回弹
+        _self.setStyle({
+            bounce: "vertical",
+            bounceBackground: "#efeff4",
+            popGesture: 'none' //首页有侧滑菜单，因此屏蔽首页的侧滑关闭功能
+        });
+
+        //绘制左上角menu图标
+        var bitmap_menu = new plus.nativeObj.Bitmap("menu");
+        bitmap_menu.loadBase64Data("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAKlBMVEUAAAAAev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8AAABINtoqAAAADHRSTlMA/fPQ0M/e3tzs7OjgY5g4AAAAAWJLR0QAiAUdSAAAAAd0SU1FB+EBFwEbOGGUPSIAAAA2SURBVDjLY2AY9oDxDBZwCJ8EswsW4DrQ/hicgPTQZSvHAioG2h+DE5AeupyrsIDVA+0PqgEAu36BkQX5nBQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDEtMjNUMDE6Mjc6NTYrMDg6MDC8FK1uAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTAxLTIzVDAxOjI3OjU2KzA4OjAwzUkV0gAAAABJRU5ErkJggg==");
+        titleView.drawBitmap(bitmap_menu, {}, {
+            top: "10px",
+            left: "10px",
+            width: "24px",
+            height: "24px"
+        });
+
+        var about_left = window.innerWidth - 34;
+        var bitmap = new plus.nativeObj.Bitmap("about");
+        bitmap.loadBase64Data("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhARcBEina5qaZAAAB10lEQVRYw+2XP0vDQBiHf7Wlq63gLAgV/QpOBnEpZHJycBL6Lq2LuFq6Kn6AK2RxKQhu2aS0XQT7DbTgLqVGR4OlDtL8uUu8S3Lape/Wy93z5L1r7t4DlrHoyCXrznZRhEsPWgUsj0PUsC886KKNO5pmErAKWjj6tUsHTRqlErBVXONEaR4snNFHQgHbQ08JPg+D+lHNKzH4ekI80GP1qOZ8JP4ClwnxAFA1Z/ZAQcDqqfAAYJgTexhuEtYg8dwLkvBacAJWxlsmPACskeP/4Bf5KjOeY4QyYBU8SwZv4x2P2JD02vI/vXAGLcnAFj3RK06lOQQ4gQwU5v8FO3Bxg2OpwluHQqDxQDpsE5/SPnPWrThFNcXBKuGxvClieXxpFACFn43cz6CsNMygHAylnmV+ita1vr/HS5qBeggZFDULirzA1SxweYGTEhQXDi8YaxaM/zsDmqKrEd+d10vBraKtUeCxgoJ7jQKPFRCQg44mfMc/NJOeaGoRd6LRCJYGvBWsVflD/1yDIMTgBOQobsbxYVDoixJqU+qjkQHf4EvgiNLRHpqzlHk0SairIotfe2BOUE3x9hFl26LuBwD1UVL+01ooReMXe0fzJH95yxRkie/Jy5DGN/4FegI2+YzMAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAxLTIzVDAxOjE4OjQxKzA4OjAw3fCu8gAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMS0yM1QwMToxODo0MSswODowMKytFk4AAAAASUVORK5CYII=");
+        titleView.drawBitmap(bitmap, {}, {
+            top: "10px",
+            left: about_left + "px",
+            width: "24px",
+            height: "24px"
+        });
+
+        titleView.interceptTouchEvent(true);
+        titleView.addEventListener("click", function(e) {
+            var x = e.clientX;
+            if(x < 44) { //触发menu菜单
+                var _left = parseInt(_self.getStyle().left);
+                if(_left > 0) { //处于显示状态
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            } else if(x > about_left) { //触发关于页面
+                var aniShow = mui.os.plus ? "slide-in-right" : "zoom-fade-out";
+                mui.openWindow({
+                    url: "examples/info.html",
+                    id: "info",
+                    styles: {
+                        popGesture: "close",
+                        statusbar: {
+                            background: "#f7f7f7"
+                        }
+                    },
+                    show: {
+                        aniShow: aniShow,
+                        duration: 300
+                    }
+                });
+            }
+        }, false);
+
+        //启用侧滑拖拽操作，延时的原因是menu页是延时创建的，所以这里需要相应延时
+        setTimeout(function() {
+            _self.drag({
+                direction: "right",
+                moveMode: "followFinger"
+            }, {
+                view: menu,
+                moveMode: "follow"
+            }, function(e) {
+                //console.log(JSON.stringify(e));
+            });
+        }, 350);
+
+        // 原生图片预览仅新版本runtime支持，若引擎不支持，则隐藏；
+        if(!plus.nativeUI.previewImage) {
+            var previewImageNativeElem = document.getElementById('preview_image_native');
+            previewImageNativeElem.className = previewImageNativeElem.className.replace('mui-plus-visible', 'mui-hidden');
+        }
+
+    });
+
+    /**
+     * 是否就（创业）业
+     * 是：显示id为workingTrue的div
+     * 否：显示id为workingFalse的div
+     */
+    document.getElementById("isWorking").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("workingTrue").style.display = ""; //显示
+            document.getElementById("workingFalse").style.display = "none"; //隐藏
+            document.getElementById("showWaiter").style.display = ""; //显示
+            isWorking = 1;
+        } else {
+            document.getElementById("workingTrue").style.display = "none"; //隐藏
+            document.getElementById("workingFalse").style.display = ""; //显示
+            document.getElementById("showWaiter").style.display = "none"; //隐藏
+            isWorking = 0;
+        }
+    });
+    /**
+     * 是否为家庭服务业从业人员
+     * 是：显示id为waiterTrue的div
+     * 否：显示id为waiterFalse的div
+     */
+    document.getElementById("isWaiter").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("WaiterTrue").style.display = ""; //显示
+            document.getElementById("WaiterFalse").style.display = "none"; //隐藏
+            isWaiter = 1;
+        } else {
+            document.getElementById("WaiterTrue").style.display = "none"; //隐藏
+            document.getElementById("WaiterFalse").style.display = ""; //显示
+            isWaiter = 0;
+        }
+    });
+    /**
+     * 是否参加过培训
+     * 是：显示id为trainedTrue的div
+     * 否：显示id为trainedFalse的div
+     */
+    document.getElementById("isTrained").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("TrainedTrue").style.display = ""; //显示
+            document.getElementById("TrainedFalse").style.display = "none"; //隐藏
+            isTrained = 1;
+        } else {
+            document.getElementById("TrainedTrue").style.display = "none"; //隐藏
+            document.getElementById("TrainedFalse").style.display = ""; //显示
+            isTrained = 0;
+        }
+    });
+    /**
+     * 是否取得培训证书
+     * 是：显示id为getCertificateTure的div
+     * 否：显示id为getCertificateTure的div
+     */
+    document.getElementById("isGetCertificate").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("getCertificateTure").style.display = ""; //显示
+            document.getElementById("getCertificateFalse").style.display = "none"; //隐藏
+            isGetCertificate = 1;
+        } else {
+            document.getElementById("getCertificateTure").style.display = "none"; //隐藏
+            document.getElementById("getCertificateFalse").style.display = ""; //显示
+            isGetCertificate = 0;
+        }
+    });
+    /**
+     * 是否有培训意愿
+     * 是：显示id为TrainHopeTrue的div
+     * 否：显示id为TrainHopeFalse的div
+     */
+    document.getElementById("isTrainHope").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("TrainHopeTrue").style.display = ""; //显示
+            document.getElementById("TrainHopeFalse").style.display = "none"; //隐藏
+            isTrainHope = 1;
+        } else {
+            document.getElementById("TrainHopeTrue").style.display = "none"; //隐藏
+            document.getElementById("TrainHopeFalse").style.display = ""; //显示
+            isTrainHope = 0;
+        }
+    });
+    /**
+     * 今年是否返乡
+     * 是：显示id为BackHomeTrue的div
+     * 否：显示id为BackHomeFalse的div
+     */
+    document.getElementById("isBackHome").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("BackHomeTrue").style.display = ""; //显示
+            document.getElementById("BackHomeFalse").style.display = "none"; //隐藏
+            isBackHome = 1;
+        } else {
+            document.getElementById("BackHomeTrue").style.display = "none"; //隐藏
+            document.getElementById("BackHomeFalse").style.display = ""; //显示
+            isBackHome = 0;
+        }
+    });
+    /**
+     * 明年是否打算外出
+     * 是：显示id为GoOutTrue的div
+     * 否：显示id为GoOutFalse的div
+     */
+    document.getElementById("isGoOut").addEventListener('toggle', function(e) {
+        if(e.detail.isActive) {
+            document.getElementById("GoOutTrue").style.display = ""; //显示
+            document.getElementById("GoOutFalse").style.display = "none"; //隐藏
+            isGoOut = 1;
+        } else {
+            document.getElementById("GoOutTrue").style.display = "none"; //隐藏
+            document.getElementById("GoOutFalse").style.display = ""; //显示
+            isGoOut = 0;
+        }
+    });
+    //防抖函数
+    function debounce(func, wait) {
+        let timer;
+        return function() {
+            let context = this; // 注意 this 指向
+            let args = arguments; // arguments中存着e
+
+            if(timer) clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                func.apply(this, args)
+            }, wait)
+        }
+    }
+    //获取选中单选按钮值
+    function getRadioRes(Name) {
+        var rdsObj = document.getElementsByName(Name);
+        var checkVal = null;
+        for(i = 0; i < rdsObj.length; i++) {
+            if(rdsObj[i].checked) {
+                checkVal = rdsObj[i].value;
+            }
+        }
+        return checkVal;
+    }
+
+    //验证数据
+    function isNullInput(value) {
+        var check = true;
+        mui("#" + value + " input").each(function() {
+            //若当前input为空，则alert提醒
+            if(!this.value || this.value.trim() == "") {
+                var label = this.previousElementSibling;
+                mui.alert(label.innerText + "不允许为空");
+                check = false;
+                return false;
+            } else {
+                check = true;
+            }
+        });
+        return check;
+    }
+
+    //验证月收入为>0
+    function checkMonthIncome() {
+        var income = document.getElementById("monthIncome").value;
+        if(isWorking) {
+            var myvalue = /^(?!(0[0-9]{0,}$))[0-9]{1,}[.]{0,}[0-9]{0,}$/;
+            if(!myvalue.test(income)) {
+                mui.alert("月收入请填大于0的纯数字！");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    /**
+     * @desc 函数防抖
+     * @param func 目标函数
+     * @param wait 延迟执行毫秒数
+     * @param immediate true - 立即执行， false - 延迟执行
+     */
+    function debounce(func, wait, immediate) {
+        let timer;
+
+        let context = this,
+            args = arguments;
+
+        if(timer) clearTimeout(timer);
+        if(immediate) {
+            let callNow = !timer;
+            timer = setTimeout(() => {
+                timer = null;
+            }, wait);
+            if(callNow) func.apply(context, args);
+        } else {
+            timer = setTimeout(() => {
+                func.apply(context, args);
+            }, wait)
+        }
+    }
+
+    // //身份证号验证
+    // document.getElementById("iDcard").addEventListener('change', function(e) {
+    // 	IdentityCodeValid();
+    // });
+    // //手机号码验证
+    // document.getElementById("Phone").addEventListener('change', function(e) {
+    // 	checkPhone();
+    // });
+    // //工资验证
+    // document.getElementById("monthIncome").addEventListener('change', function(e) {
+    // 	checkMonthIncome();
+    // });
+    //初始化参数
+    var realName = "",
+        nation = "",
+        idCard = "",
+        //birthday=null,
+        phone = "",
+        householdProvinceId = 0,
+        householdCityId = 0,
+        householdCountyId = 0,
+        householdTownId = 0,
+        householdVillageId = 0,
+        householdAddress = "",
+        education = 0,
+        politicalType = 0,
+        memberType = 0,
+        headHousehold = 0,
+        relationHeadHousehold = 0,
+        economicStatus = 0,
+        healthStatus = 0,
+        businessProvinceId = "",
+        businessCountyId = "",
+        businessCityId = "",
+        businessAddress = "",
+        businessChannel = 0,
+        companyName = "",
+        workBusinessDate = "",
+        industry = 0,
+        workType = 0,
+        laborChannel = 0,
+        workSkills = 0,
+        monthIncome = "",
+        notWorkReason = 0,
+        trainedType = 0,
+        trainedCertificateCount = 0,
+        trainPlan = 0,
+        returnHometownDate = "",
+        planGoOutDate = "",
+        nextWorkPlan = 0;
+
+    document.getElementById("submitBtn").addEventListener('click', function(event) {
+        debounce(postValue, 300, true);
+    });
+
+    function postValue() {
+        //非空验证
+        var testBasicInformation = isNullInput("test1"); //基本信息验证
+        var testIdCardInformation = IdentityCodeValid(); //身份证验证
+        var testPhoneInformation = checkPhone(); //手机号验证
+        var testWorkInformation = true; //就/创业基本信息验证
+        var testHomeWorkInformation = true; //家庭服务业从业者信息验证
+        var testTrainInformation = true; //培训基本信息验证
+        var testNextWorkHopeInformation = isNullvalue("showWorkHopePicker"); //下一步就业意愿
+        var testMonthIncome = true; //月工资验证
+        var testBackHomeDate = true; //春节前是否返乡验证
+        var testGoOutDate = true; //春节后是否外出验证
+        if(testBasicInformation) {
+            if(isWorking == 1) {
+                testWorkInformation = isNullInput("workingTrue");
+                testMonthIncome = checkMonthIncome();
+                if(isWaiter == 1) {
+                    testHomeWorkInformation = isNullInput("WaiterTrue");
+                }
+            } else {
+                testWorkInformation = isNullInput("workingFalse");
+            }
+            if(isTrained == 1) {
+                testTrainInformation = isNullInput("TrainedTrue");
+            } else {
+                if(isTrainHope == 1) {
+                    testTrainInformation = isNullInput("TrainHopeTrue");
+                }
+            }
+            if(isBackHome == 1) {
+                testBackHomeDate = isNullInput("BackHomeTrue");
+            }
+            if(isGoOut == 1) {
+                testGoOutDate = isNullInput("GoOutTrue");
+            }
+
+        }
+
+        //数据获取
+        realName = document.getElementById("Name").value;
+        idCard = document.getElementById("iDcard").value;
+        //birthday=document.getElementById("birthDate").value;
+        phone = document.getElementById("Phone").value;
+        householdAddress = document.getElementById("hjAddress").value;
+        businessAddress = document.getElementById("cyAddress").value;
+        companyName = document.getElementById("companyName").value;
+        workBusinessDate = document.getElementById("workDate").value;
+        monthIncome = document.getElementById("monthIncome").value;
+        returnHometownDate = document.getElementById("backDate").value;
+        planGoOutDate = document.getElementById("goOutDate").value;
+        // trainedCertificateCount = document.getElementById("trainedCertificateCount").value;
+        if(testBasicInformation && testIdCardInformation && testPhoneInformation && testWorkInformation && testHomeWorkInformation && testTrainInformation && testNextWorkHopeInformation && testBackHomeDate && testGoOutDate && testMonthIncome) {
+            var postData = {
+                realName: realName, //姓名
+                nation: nation, //民族
+                //gender: getRadioRes('sex'), //性别
+                idCard: idCard, //身份证号
+                //birthday: birthday, //生日
+                phone: phone, //手机号
+                householdProvinceId: householdProvinceId, //省份id-户籍
+                householdCityId: householdCityId, //市id-户籍
+                householdCountyId: householdCountyId, //县id-户籍
+                householdTownId: householdTownId, //乡/镇id-户籍
+                householdVillageId: householdVillageId, //行政村id-户籍
+                householdAddress: householdAddress, //详细地址-户籍
+                education: education, //文化程度
+                politicalType: politicalType, //政治面貌
+                memberType: memberType, //类别（1-返乡农民工，返乡大学生，复退军人，下乡职工，下乡科技人员，在乡就业，在家务农，灵活就业，在乡创业，在外就业，其他（在外周商、在外周才））
+                headHousehold: headHousehold, //是否户主
+                relationHeadHousehold: relationHeadHousehold, //与户主关系
+                economicStatus: economicStatus, //脱贫状态
+                healthStatus: healthStatus, //健康状况
+                businessStatus: isWorking, //是否就（创）业
+                businessChannel: businessChannel, //就（创）业途径
+                businessProvinceId: businessProvinceId, //就（创）业地
+                businessCountyId: businessCountyId, //市id-就（创）业地
+                businessCityId: businessCityId, //县id-就（创）业地
+                businessAddress: businessAddress, //就（创）业详细地址
+                companyName: companyName, //单位名称
+                workBusinessDate: workBusinessDate, //就（创）业日期
+                industry: industry, //从事行业
+                homeServiceStatus: isWaiter, //是否为家庭服务业从业人员
+                workType: workType, //从业类型
+                receiveTrainStatus: isTrained, //是否接受培训
+                contractStatus: getRadioRes('getContract'), //是否签订合同
+                laborChannel: laborChannel, //输出渠道
+                workSkills: workSkills, //劳动技能
+                monthIncome: monthIncome, //月收入（元）
+                notWorkReason: notWorkReason, //未就业原因
+                trainedStatus: getRadioRes('trained'), //是否参加过培训
+                trainedType: trainedType, //培训类型
+                trainedCertificate: isGetCertificate, //是否取得培训证书
+                trainedCertificateCount: trainedCertificateCount, //所得证书份数
+                trainedWorkStatus: getRadioRes('work'), //培训后:
+                noWorkPlanReason: "无", //无就业、培训原因
+                trainPlanStatus: isTrainHope, //是否有培训意愿
+                trainPlan: trainPlan, //培训意向
+                returnHometownDate: returnHometownDate, //返乡日期
+                planGoOutDate: planGoOutDate, //拟外出日期
+                nextWorkPlan: nextWorkPlan //下一步就业意愿
+            };
+            //					mui(this).button('提交中...');
+            //					setTimeout(function() {
+            //						mui(this).button('reset');
+            //					}.bind(this), 10000);
+            var url = "https://api.zkyjr.ssnyjt.com:4430/api/member/add";  //生产
+            //var url = "http://api-test.zkyjr.ssnyjt.com/api/member/add"; //测试
+            //var mask = mui.createMask(callback); //遮罩层
+            document.getElementById('submitBtn').disabled = true;
+            mui.ajax(url, {
+                data: postData,
+                dataType: 'json', //服务器返回json格式数据
+                type: 'post', //HTTP请求类型
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                timeout: 10000, //超时时间设置为10秒；
+                success: function(res) {
+                    if(res.code == 200) {
+                        mui.alert("数据提交成功！", '提示', function() {
+                            location.reload();
+                        });
+                    } else {
+                        document.getElementById('submitBtn').disabled = false;
+                        mui.alert(res.msg);
+                    }
+                },
+                error: function(xhr, type, errorThrown) {
+                    //异常处理；
+                    mui.alert("数据提交失败，请检查输入数据是否规范，刷新页面重新提交！谢谢配合！");
+                    document.getElementById('submitBtn').disabled = false;
+                    console.log(type);
+                }
+            });
+        }
+
+    }
+</script>
+</body>
+
+</html>
+<style>
+    .banner {
+        width: 100%;
+    }
+</style>
